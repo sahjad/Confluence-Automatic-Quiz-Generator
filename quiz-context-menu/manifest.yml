@@ -1,0 +1,31 @@
+modules:
+  confluence:contentAction:
+    - key: quiz-context-menu-hello-world-content-action
+      resource: main
+      resolver:
+        function: resolver
+      viewportSize: large
+      title: Start Quiz
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+    scripts:
+      - unsafe-inline
+      - unsafe-eval
+  scopes:
+    - read:confluence-content.summary
+  external:
+    fetch:
+      backend:
+        - https://generativelanguage.googleapis.com
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/b046fe63-35ef-4fb7-b6a4-c557985a79f5

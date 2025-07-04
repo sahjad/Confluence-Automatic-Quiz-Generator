@@ -1,0 +1,31 @@
+modules:
+  macro:
+    - key: quiz-app-hello-world
+      resource: main
+      resolver:
+        function: resolver
+      title: quiz-app
+      description: Inserts Hello world!
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+    scripts:
+      - unsafe-inline
+      - unsafe-eval
+  scopes:
+    - read:confluence-content.summary
+  external:
+    fetch:
+      backend:
+        - https://generativelanguage.googleapis.com
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/f6ce7203-9ef9-40ba-b8e4-87e4c9a0be48

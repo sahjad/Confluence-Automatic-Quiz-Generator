@@ -1,0 +1,31 @@
+modules:
+  macro:
+    - key: quiz-universal-textbox-hello-world
+      resource: main
+      resolver:
+        function: resolver
+      title: textbox-quiz-universal
+      description: Inserts Hello world!
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+    scripts:
+      - unsafe-inline
+      - unsafe-eval
+  scopes:
+    - read:confluence-content.summary
+  external:
+    fetch:
+      backend:
+        - https://generativelanguage.googleapis.com
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/e79c28cd-9bfc-4618-9491-6a7fd121fbfb
